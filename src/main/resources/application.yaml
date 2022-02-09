@@ -1,0 +1,29 @@
+server:
+  port: 8080
+  servlet:
+    contextPath: /
+
+spring:
+    profiles:
+        active: dev
+    application:
+        name: application template
+        version: 1.1.0
+        node: DEMO
+    data:
+        mongodb:
+            database: demo-spring-boot  # <MongoDB name database>
+            uri: mongodb://admin:passw0rd@localhost:27017 # <MongoDB connection String>
+app:
+    message: This is Template Spring-boot Application Run on Profile ${{spring.profiles.active}}
+
+# Open logging for develop
+logging:
+  level:
+    org.springframework.data.mongodb.core.MongoTemplate: DEBUG
+    org.mongodb.driver.protocol.command: DEBUG
+
+# Setup Call Producer and Consumer Message queue KAFKA
+# kafka:
+#   bootstrapAddress: <-IP ADDRESS KAFKA->:<-PORT KAFKA-> 
+#   groupId: <-GROUP ID FOR CONSUMER MESSAGE QUEUE->
